@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class SJF {
+	public static void main(String[] args) {
+		
+		System.out.print("How many process do you have to execute : ");
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();
+		
+		String pid[] = new String[n];
+		int bt[] = new int[n];
+		int ct[] = new int[n];
+		int tat[] = new int[n];
+		int wt[] = new int[n];
+		
+		for(int a=0 ; a<n ; a++) {
+			System.out.print("Enter the process number " + (a+1) + ": ");
+			pid[a] = input.next();
+			System.out.print("Enter the burst time of the process number " + (a+1) + ": ");
+			bt[a] = input.nextInt();
+		}
+		
+		for(int b=0 ; b<n ; b++) {
+			for(int c=b ; c<n ; c++) {
+				if(bt[b] > bt[c]) {
+					int temp1 = bt[b];
+					bt[b] = bt[c];
+					bt[c] = temp1;
+					String temp2 = pid[b];
+					pid[b] = pid[c];
+					pid[c] = temp2;
+				}
+			}
+		}
+		
+		int sumWT=0;
+		int sumTAT=0;
+		
+		for(int c=0 ; c<n ; c++) {
+			if(c==0) {
+				ct[c] = bt[c];
+				tat[c] = bt[c];
+				wt[c] = tat[c] - bt[c];
+			}
+			else {
+				ct[c] = bt[c] + ct[c-1];
+				tat[c] = bt[c] + tat[c-1];
+				wt[c] = tat[c] - bt[c];
+			}
+			sumTAT = sumTAT + tat[c];
+			sumWT = sumWT + wt[c];
+		}
+		
+		System.out.println("PID" + "\t" + "BT" + "\t" + "CT" + "\t" + "TAT" + "\t" + "WT");
+        for (int i = 0 ; i<n ; i++) {
+            System.out.println(pid[i] + "\t" + bt[i] + "\t" + ct[i] + "\t" + tat[i] + "\t" + wt[i]);
+        }
+        System.out.println();
+		
+		double aveWT = (double)sumWT/n;
+		double aveTAT = (double)sumTAT/n;
+		System.out.println("Average Waiting Time : " + aveWT);
+		System.out.println("Average Turn Around Time : " + aveTAT);
+		
+		
+	}
+}
