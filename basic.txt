@@ -1,0 +1,90 @@
+-----------------------------------------------------------------------------------------------
+                               SYSTEM BASED COMMAND
+-----------------------------------------------------------------------------------------------
+
+# information about linux
+uname -a
+
+# kernel relese information
+uname -r
+
+# shows system host name
+hostname
+
+# shows the ip address of the system
+hostname -i
+
+# show system reboot history
+last reboot
+
+# display current date and time 
+date
+
+# current logged user 
+whoami
+
+# show home directory
+cd /home
+
+# listing all file 
+ls
+
+# listing hidden file also
+ls -a
+
+# listing files with information
+ls -l
+
+# display current month and day
+cal
+
+# network configure interface 
+ifconfig
+
+----------------------------------------------------------------------------------------------------------
+                                      HARDWARE BASED CMD
+----------------------------------------------------------------------------------------------------------
+
+# display bootup message
+dmesg
+
+# display more information about cpu
+cat /proc/cpuinfo
+
+# display more information about hardware memory
+cat /proc/meminfo
+
+# dispaly information about hardware configuration
+lshw
+
+# display block device related information (disk info)
+lsblk
+
+# display free and used memory in system
+free -m
+
+# Displays hardware information from the BIOS
+dmidecode
+
+# Displays information about disk data
+hdparm -i /dev/xda
+
+# Tests for unreadable blocks on disk
+badblocks -s /dev/xda 
+
+
+----------------------------------------------------------------------------------------------------------
+                                      USER MANAGEMENT COMMAND
+----------------------------------------------------------------------------------------------------------
+
+# id - display the details about user ( uid, gid, group)
+# last - shows the last logins in the system
+# who - show who is logged in to the system
+# groupadd "admin" - adds the group 'admin'
+# adduser "Sam" - adding new user Sam
+# userdel "Sam" - remove user "Sam"
+# usermod - changing user modes
+
+
+
+
