@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class FCFS {
+	public static void main(String[] args) {
+		
+		System.out.print("How many process do you have to execute : ");
+		Scanner input = new Scanner(System.in);
+		int n = input.nextInt();
+		
+		String pid[] = new String[n];
+		int bt[] = new int[n];
+		int ct[] = new int[n];
+		int tat[] = new int[n];
+		int wt[] = new int[n];
+		
+		for(int a=0 ; a<n ; a++) {
+			System.out.print("Enter the process number " + (a+1) + ": ");
+			pid[a] = input.next();
+			System.out.print("Enter the burst time of the process number " + (a+1) + ": ");
+			bt[a] = input.nextInt();
+		}
+		
+		int sumWT=0;
+		int sumTAT=0;
+		
+		for(int b=0 ; b<n ; b++) {
+			if(b==0) {
+				ct[b] = bt[b];
+				tat[b] = bt[b];
+				wt[b] = tat[b] - bt[b];
+			}
+			else {
+				ct[b] = bt[b] + ct[b-1];
+				tat[b] = bt[b] + tat[b-1];
+				wt[b] = tat[b] - bt[b];
+			}
+			sumTAT = sumTAT + tat[b];
+			sumWT = sumWT + wt[b];
+		}
+		
+		System.out.println(" ");
+		
+		System.out.println("Process Id \t Burst Time \t Compiletion Time \t Turn Around Time \t Waiting Time");
+		for(int c=0 ; c<n ; c++) {
+			System.out.println(pid[c] +"\t\t\t"+ bt[c] +"\t\t"+ ct[c] +"\t\t\t"+ tat[c] +"\t\t\t"+ wt[c]);
+		}
+		
+		System.out.println(" ");
+		
+		double aveWT = (double)sumWT/n;
+		double aveTAT = (double)sumTAT/n;
+		System.out.println("Average Waiting Time : " + aveWT);
+		System.out.println("Average Turn Around Time : " + aveTAT);
+	}
+
+}
