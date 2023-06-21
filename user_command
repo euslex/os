@@ -1,0 +1,22 @@
+List users             - cat /etc/passwd | cut -d: -f1
+List groups            - cat /etc/group | cut -d: -f1
+Create a new user      - sudo adduser newuser
+Change user password of set password for the new user  -  sudo passwd username
+Add new group          - sudo groupadd newgroup
+Add existing user to group       - sudo usermod -a -G groupname username
+Removing user from group         - sudo deluser username groupname
+Change user primary group        - sudo usermod -g newgroup username
+Delete a group                   - sudo groupdel groupname
+Delete users                     - sudo deluser username
+Add permissions                  - Chmod ugo+/- rwx filename
+For view permission for a file   - Ls -l | grep file name
+Add permissions via numbera      - Chmod 777 filename
+
+
+To c programming
+
+Touch filename.c  -> create file
+
+Gcc filename.c -o temp -> compile (convert executable file)
+
+./temp     -> execute 
